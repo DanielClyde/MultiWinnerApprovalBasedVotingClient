@@ -1,18 +1,31 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <VoterRow :voter="voter" />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+import VoterRow from '@/components/VoterRow.vue'
 
 export default {
-  name: "HomeView",
+  name: 'HomeView',
   components: {
-    HelloWorld,
+    VoterRow,
   },
-};
+  data() {
+    return {
+      voter: {
+        name: 'Danny',
+        tags: [
+          { name: 'Puppies', pro: true },
+          { name: 'Cats', pro: false },
+          { name: 'Aligators', pro: true },
+          { name: 'Spiders', pro: false },
+          { name: 'Snakes', pro: false },
+        ],
+      },
+    }
+  },
+}
 </script>
