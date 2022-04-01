@@ -1,4 +1,4 @@
-# mas-proj-fontend
+# Approval-based Multiwinner Voting Demo
 
 ## Project setup
 ```
@@ -24,6 +24,13 @@ npm run test:unit
 ```
 npm run lint
 ```
+
+### VS Code Configuration
+Install the following extensions for the best experience in VSCode
+- es6-string-html
+- ESLint
+- Prettier
+- Vetur
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
