@@ -1,7 +1,5 @@
 <template>
-  <div class="home">
-    <VoterRow :voter="voter" />
-  </div>
+  <VoterRow :voter="voter" />
 </template>
 
 <script>
