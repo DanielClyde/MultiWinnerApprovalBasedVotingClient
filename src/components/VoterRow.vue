@@ -2,9 +2,9 @@
   <div class="voter-row">
     <div data-testid="voter-name" class="voter-name">{{ voter.name }}</div>
     <div class="tag-list">
-      <TagPill v-for="t in tags" :key="t.name" :text="t.name" :pro="t.pro" />
+      <TagPill v-for="t in tags" :key="t.title" :text="t.title" :pro="t.pro" />
     </div>
-    <div class="score">score</div>
+    <div v-if="voter.score" class="score">score</div>
   </div>
 </template>
 <script>
@@ -19,7 +19,7 @@ export default {
   },
   computed: {
     tags() {
-      return orderBy(this.voter.tags, ['pro', 'name'], ['desc', 'asc'])
+      return orderBy(this.voter.tags, ['pro', 'title'], ['desc', 'asc'])
     },
   },
   components: {

@@ -1,5 +1,5 @@
 <template>
-  <VoterRow :voter="voter" />
+  <VoterRow v-for="voter in voters" :key="voter.name" :voter="voter" />
 </template>
 
 <script>
@@ -11,19 +11,13 @@ export default {
   components: {
     VoterRow,
   },
-  data() {
-    return {
-      voter: {
-        name: 'Danny',
-        tags: [
-          { name: 'Puppies', pro: true },
-          { name: 'Cats', pro: false },
-          { name: 'Aligators', pro: true },
-          { name: 'Spiders', pro: false },
-          { name: 'Snakes', pro: false },
-        ],
-      },
-    }
+  computed: {
+    voters() {
+      return this.$store.state.voters
+    },
+  },
+  created() {
+    this.$store.dispatch('fetchVoters')
   },
 }
 </script>
