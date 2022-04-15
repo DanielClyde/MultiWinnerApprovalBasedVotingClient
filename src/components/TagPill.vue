@@ -31,7 +31,8 @@ export default {
   border-radius: 1em;
   font-weight: 600;
   box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
-  margin: 0px 5px;
+  margin: 5px;
+  margin-left: auto;
 }
 
 .pro {

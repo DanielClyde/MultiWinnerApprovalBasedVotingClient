@@ -5,6 +5,14 @@
   </nav>
   <router-view />
 </template>
+<script>
+export default {
+  created() {
+    this.$store.dispatch('fetchVoters')
+    this.$store.dispatch('fetchSearchTerms')
+  },
+}
+</script>
 
 <style>
 nav {

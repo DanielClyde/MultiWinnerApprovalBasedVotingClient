@@ -12,7 +12,9 @@
     />
     <h4>Form Value:</h4>
     <pre>{{ form }}</pre>
-    <button class="button -fill-gradient" type="submit">Search</button>
+    <button :disabled="!formValid" class="button -fill-gradient" type="submit">
+      Search
+    </button>
   </form>
 </template>
 <script>
@@ -23,18 +25,28 @@ export default {
     BaseSelect,
     BaseTypeAhead,
   },
+  computed: {
+    terms() {
+      return this.$store.state.searchTerms
+    },
+    formValid() {
+      return this.form && this.form.abcRule && this.form.searchTerm
+    },
+  },
   data() {
     return {
       abcRuleOptions: ['AV', 'CC', 'Phragmens'],
-      terms: ['Dogs', 'Cats', 'Aligators', 'Spiders', 'Snakes'],
       form: {
         abcRule: 'AV',
         searchTerm: '',
       },
     }
   },
-  onFormSubmit() {
-    console.log('MAKE REQUEST WITH THIS DATA', this.form)
+  methods: {
+    onFormSubmit() {
+      console.log('MAKE REQUEST WITH THIS DATA', this.form)
+      this.$store.dispatch('fetchResults', this.form)
+    },
   },
 }
 </script>

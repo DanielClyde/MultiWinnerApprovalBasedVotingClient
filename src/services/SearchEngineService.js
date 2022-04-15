@@ -12,15 +12,22 @@ const apiClient = axios.create({
 export default {
   getVoters() {
     return apiClient.get('/voters').then((res) => {
-      let voters = res.data
-      console.log('VOTERS', voters)
-      return voters
+      console.log('VOTERS', res.data)
+      return res.data
     })
   },
   getSearchTerms() {
     return apiClient.get('/search-terms').then((res) => {
-      console.log('SEARCH TERMS', res)
-      return res
+      console.log('SEARCH TERMS', res.data)
+      return res.data
     })
+  },
+  getSearchResults(term, abcRule) {
+    return apiClient
+      .get(`/results?&abcRule=${abcRule}&term=${term}`)
+      .then((res) => {
+        console.log('RESULTS', res)
+        return res
+      })
   },
 }

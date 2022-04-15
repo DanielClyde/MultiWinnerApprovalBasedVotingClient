@@ -41,4 +41,9 @@ export default {
   font-weight: 600;
   color: #666666;
 }
+.tag-list {
+  margin-left: 20px;
+  display: flex;
+  flex-wrap: wrap;
+}
 </style>
