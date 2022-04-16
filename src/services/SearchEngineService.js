@@ -22,12 +22,14 @@ export default {
       return res.data
     })
   },
-  getSearchResults(term, abcRule) {
+  getSearchResults(term, abcRule, numOfResults) {
     return apiClient
-      .get(`/results?&abcRule=${abcRule}&term=${term}`)
+      .get(
+        `/results?&abcRule=${abcRule}&term=${term}&numOfResults=${numOfResults}`
+      )
       .then((res) => {
-        console.log('RESULTS', res)
-        return res
+        console.log('RESULTS', res.data)
+        return res.data
       })
   },
 }

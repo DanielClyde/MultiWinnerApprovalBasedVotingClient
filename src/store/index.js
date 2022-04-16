@@ -20,9 +20,12 @@ export default createStore({
       state.searchTerms = searchTerms
     },
     SET_SEARCH_RESULTS(state, results) {
-      state.voters = results.voters
-      state.simulationResults.winningLinks = results.winning_links
-      state.totalSocialWelfare = results.total_utility
+      state.voters = results.voters.map((v, i) => {
+        v.utility = results.voterUtilities[i]
+        return v
+      })
+      state.simulationResults.winningLinks = results.winningLinks
+      state.totalSocialWelfare = results.totalUtility
     },
   },
   actions: {
@@ -38,11 +41,13 @@ export default createStore({
     },
     fetchResults({ commit }, form) {
       console.log(form)
-      SearchEngineService.getSearchResults(form.searchTerm, form.abcRule).then(
-        (results) => {
-          commit('SET_SEARCH_RESULTS', results)
-        }
-      )
+      SearchEngineService.getSearchResults(
+        form.searchTerm,
+        form.abcRule,
+        form.numOfResults
+      ).then((results) => {
+        commit('SET_SEARCH_RESULTS', results)
+      })
     },
   },
   modules: {},

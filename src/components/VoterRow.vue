@@ -4,7 +4,10 @@
     <div class="tag-list">
       <TagPill v-for="t in tags" :key="t.title" :text="t.title" :pro="t.pro" />
     </div>
-    <div v-if="voter.score" class="score">score</div>
+    <div v-if="voter.utility" class="utility">
+      <div>Utility:</div>
+      <div>{{ voter.utility }}</div>
+    </div>
   </div>
 </template>
 <script>
@@ -45,5 +48,12 @@ export default {
   margin-left: 20px;
   display: flex;
   flex-wrap: wrap;
+}
+.utility {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 14pt;
+  color: #666666;
 }
 </style>
