@@ -4,10 +4,11 @@ import SearchEngineService from '@/services/SearchEngineService'
 export default createStore({
   state: {
     voters: [],
+    links: [],
     simulationResults: {
       winningLinks: [],
       losingLinks: [],
-      totalSocialWelfare: 0,
+      totalSocialWelfare: -1,
     },
     searchTerms: [],
   },
@@ -15,6 +16,9 @@ export default createStore({
   mutations: {
     SET_VOTERS(state, voters) {
       state.voters = voters
+    },
+    SET_LINKS(state, links) {
+      state.links = links
     },
     SET_SEARCH_TERMS(state, searchTerms) {
       state.searchTerms = searchTerms
@@ -25,13 +29,41 @@ export default createStore({
         return v
       })
       state.simulationResults.winningLinks = results.winningLinks
-      state.totalSocialWelfare = results.totalUtility
+      state.simulationResults.totalSocialWelfare = results.totalUtility
+      console.log('SETTING SEARCH RESULTS', state)
     },
   },
   actions: {
     fetchVoters({ commit }) {
       SearchEngineService.getVoters().then((voters) => {
         commit('SET_VOTERS', voters)
+      })
+    },
+    fetchLinks({ commit }) {
+      SearchEngineService.getLinks().then((links) => {
+        commit('SET_LINKS', links)
+      })
+    },
+    refreshVoters({ commit }) {
+      commit('SET_SEARCH_RESULTS', {
+        winningLinks: [],
+        losingLinks: [],
+        totalSocialWelfare: -1,
+        voters: [],
+      })
+      SearchEngineService.refreshVoters().then((voters) => {
+        commit('SET_VOTERS', voters)
+      })
+    },
+    refreshLinks({ commit }) {
+      commit('SET_SEARCH_RESULTS', {
+        winningLinks: [],
+        losingLinks: [],
+        totalSocialWelfare: -1,
+        voters: [],
+      })
+      SearchEngineService.refreshLinks().then((links) => {
+        commit('SET_LINKS', links)
       })
     },
     fetchSearchTerms({ commit }) {

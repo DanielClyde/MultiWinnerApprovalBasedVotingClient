@@ -2,6 +2,7 @@
   <nav>
     <router-link to="/">Voters</router-link> |
     <router-link to="/simulation">Search</router-link>
+    <router-link to="/links">Links</router-link>
   </nav>
   <router-view />
 </template>
@@ -9,6 +10,7 @@
 export default {
   created() {
     this.$store.dispatch('fetchVoters')
+    this.$store.dispatch('fetchLinks')
     this.$store.dispatch('fetchSearchTerms')
   },
 }

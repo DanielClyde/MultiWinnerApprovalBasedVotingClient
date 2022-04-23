@@ -4,7 +4,7 @@
     <div class="tag-list">
       <TagPill v-for="t in tags" :key="t.title" :text="t.title" :pro="t.pro" />
     </div>
-    <div v-if="voter.utility" class="utility">
+    <div v-if="voter.utility >= 0" class="utility">
       <div>Utility:</div>
       <div>{{ voter.utility }}</div>
     </div>

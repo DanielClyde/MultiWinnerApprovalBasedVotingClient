@@ -32,6 +32,9 @@
         </button>
       </div>
     </div>
+    <div v-if="totalSocialWelfare >= 0" class="total">
+      Social Welfare: {{ totalSocialWelfare }}
+    </div>
     <div class="link-list" v-if="winningLinks.length">
       <VoterRow v-for="link in winningLinks" :key="link.name" :voter="link" />
     </div>
@@ -49,6 +52,9 @@ export default {
     VoterRow,
   },
   computed: {
+    totalSocialWelfare() {
+      return this.$store.state.simulationResults.totalSocialWelfare
+    },
     winningLinks() {
       return this.$store.state.simulationResults.winningLinks
     },
@@ -69,7 +75,7 @@ export default {
   },
   data() {
     return {
-      abcRuleOptions: ['AV', 'CC', 'Phragmens'],
+      abcRuleOptions: ['AV', 'CC', 'PAV', 'SeqPhragmens', 'SAV'],
       numberOfResultsOptions: [2, 3, 4, 5, 6, 7, 8, 9, 10],
       form: {
         abcRule: 'AV',
@@ -87,6 +93,11 @@ export default {
 }
 </script>
 <style>
+.total {
+  width: 100%;
+  font-size: 18pt;
+  color: #666666;
+}
 .form-row {
   display: flex;
   justify-content: space-evenly;

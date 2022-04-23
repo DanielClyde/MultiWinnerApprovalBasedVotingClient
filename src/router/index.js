@@ -16,6 +16,12 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "about" */ '../views/SearchSimulation.vue'),
   },
+  {
+    path: '/links',
+    name: 'link-list',
+    component: () =>
+      import(/* webpackChunkName: "about" */ '../views/LinkList.vue'),
+  },
 ]
 
 const router = createRouter({

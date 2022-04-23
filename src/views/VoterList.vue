@@ -1,4 +1,7 @@
 <template>
+  <button @click="regenerateVoters" class="button -fill-gradient">
+    Regenerate Voters
+  </button>
   <VoterRow v-for="voter in voters" :key="voter.name" :voter="voter" />
 </template>
 
@@ -14,6 +17,11 @@ export default {
   computed: {
     voters() {
       return this.$store.state.voters
+    },
+  },
+  methods: {
+    regenerateVoters() {
+      this.$store.dispatch('refreshVoters')
     },
   },
 }
