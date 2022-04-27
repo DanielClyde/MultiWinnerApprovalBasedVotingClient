@@ -30,7 +30,6 @@ export default createStore({
       })
       state.simulationResults.winningLinks = results.winningLinks
       state.simulationResults.totalSocialWelfare = results.totalUtility
-      console.log('SETTING SEARCH RESULTS', state)
     },
   },
   actions: {
@@ -72,7 +71,6 @@ export default createStore({
       })
     },
     fetchResults({ commit }, form) {
-      console.log(form)
       SearchEngineService.getSearchResults(
         form.searchTerm,
         form.abcRule,

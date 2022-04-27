@@ -86,7 +86,6 @@ export default {
   },
   methods: {
     onFormSubmit() {
-      console.log('MAKE REQUEST WITH THIS DATA', this.form)
       this.$store.dispatch('fetchResults', this.form)
     },
   },

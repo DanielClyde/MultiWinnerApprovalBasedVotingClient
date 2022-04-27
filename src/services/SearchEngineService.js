@@ -12,31 +12,26 @@ const apiClient = axios.create({
 export default {
   refreshLinks() {
     return apiClient.get('/refresh-links').then((res) => {
-      console.log('REGENERATED LINKS', res.data)
       return res.data
     })
   },
   refreshVoters() {
     return apiClient.get('/refresh-voters').then((res) => {
-      console.log('REGENERATED VOTERS', res.data)
       return res.data
     })
   },
   getLinks() {
     return apiClient.get('/links').then((res) => {
-      console.log('LINKS', res.data)
       return res.data
     })
   },
   getVoters() {
     return apiClient.get('/voters').then((res) => {
-      console.log('VOTERS', res.data)
       return res.data
     })
   },
   getSearchTerms() {
     return apiClient.get('/search-terms').then((res) => {
-      console.log('SEARCH TERMS', res.data)
       return res.data
     })
   },
@@ -46,7 +41,6 @@ export default {
         `/results?&abcRule=${abcRule}&term=${term}&numOfResults=${numOfResults}`
       )
       .then((res) => {
-        console.log('RESULTS', res.data)
         return res.data
       })
   },
