@@ -26,6 +26,7 @@ export default createStore({
     SET_SEARCH_RESULTS(state, results) {
       state.voters = results.voters.map((v, i) => {
         v.utility = results.voterUtilities[i]
+        v.represented = results.voterRepresentation[i]
         return v
       })
       state.simulationResults.winningLinks = results.winningLinks

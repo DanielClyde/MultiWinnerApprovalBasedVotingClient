@@ -1,6 +1,12 @@
 <template>
   <div class="voter-row">
-    <div data-testid="voter-name" class="voter-name">{{ voter.name }}</div>
+    <div
+      data-testid="voter-name"
+      class="voter-name"
+      :class="{ 'is-represented': voter.represented }"
+    >
+      {{ voter.name }}
+    </div>
     <div class="tag-list">
       <TagPill v-for="t in tags" :key="t.title" :text="t.title" :pro="t.pro" />
     </div>
@@ -48,6 +54,9 @@ export default {
   margin-left: 20px;
   display: flex;
   flex-wrap: wrap;
+}
+.is-represented {
+  color: rgba(55, 171, 63, 1);
 }
 .utility {
   display: flex;
