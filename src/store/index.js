@@ -9,6 +9,7 @@ export default createStore({
       winningLinks: [],
       losingLinks: [],
       totalSocialWelfare: -1,
+      totalRepresentation: -1,
     },
     searchTerms: [],
   },
@@ -31,6 +32,7 @@ export default createStore({
       })
       state.simulationResults.winningLinks = results.winningLinks
       state.simulationResults.totalSocialWelfare = results.totalUtility
+      state.simulationResults.totalRepresentation = results.totalRepresentation
     },
   },
   actions: {
